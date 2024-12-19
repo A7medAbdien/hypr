@@ -21,6 +21,7 @@ echo $cache_file
 if [ -f "$cache_file" ]; then
     # Get the wallpaper path from the cache file
     wallpaper_path=$(grep -v 'Lanczos3' "$cache_file" | head -n 1)
+    # wallpaper_path=$(cat "$cache_file")
     echo $wallpaper_path
     # symlink the wallpaper to the location Rofi can access
     if ln -sf "$wallpaper_path" "$HOME/.config/rofi/.current_wallpaper"; then
@@ -35,5 +36,5 @@ if [ "$ln_success" = true ]; then
     # execute wallust
 	echo 'about to execute wallust'
     # execute wallust skipping tty and terminal changes
-    wallust run "$wallpaper_path" &
+    wallust run "$wallpaper_path" -s &
 fi

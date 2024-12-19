@@ -32,6 +32,7 @@ while true; do
 		| sort -n | cut -d':' -f2- \
 		| while read -r img; do
 			swww img -o $focused_monitor "$img"
+			sleep 2 # here
 			$wallust_refresh
 			sleep $INTERVAL
 
